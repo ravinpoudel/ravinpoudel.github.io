@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Ravin Poudel">
+    <meta name="description" content="Some of the handy UNIX/Linux one liner for bioinformatics.
+# Find all the file name with specific pattern and copy to a folder find data/ -type f -name &#34;S[0-9]*.tsv&#34; | xargs -i cp {} sparccOutput/ # Find any files with particular pattern inside all directories grep --recursive --ignore-case --files-with-matches &#34;CANCELLED&#34; Root_RST-04-106/ # Count the number of files within a folder. ls -F |grep -v / | wc -l # List just the names of matching files grep -l &#39;main&#39; *.">
+    <meta name="keywords" content="bioinformatics,genomics,personal">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="UNIX/Linux One Liner for Bioinformatics"/>
+<meta name="twitter:description" content="Some of the handy UNIX/Linux one liner for bioinformatics.
+# Find all the file name with specific pattern and copy to a folder find data/ -type f -name &#34;S[0-9]*.tsv&#34; | xargs -i cp {} sparccOutput/ # Find any files with particular pattern inside all directories grep --recursive --ignore-case --files-with-matches &#34;CANCELLED&#34; Root_RST-04-106/ # Count the number of files within a folder. ls -F |grep -v / | wc -l # List just the names of matching files grep -l &#39;main&#39; *."/>
+
+    <meta property="og:title" content="UNIX/Linux One Liner for Bioinformatics" />
+<meta property="og:description" content="Some of the handy UNIX/Linux one liner for bioinformatics.
+# Find all the file name with specific pattern and copy to a folder find data/ -type f -name &#34;S[0-9]*.tsv&#34; | xargs -i cp {} sparccOutput/ # Find any files with particular pattern inside all directories grep --recursive --ignore-case --files-with-matches &#34;CANCELLED&#34; Root_RST-04-106/ # Count the number of files within a folder. ls -F |grep -v / | wc -l # List just the names of matching files grep -l &#39;main&#39; *." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ravinpoudel.github.io/posts/unixoneliner/" />
+<meta property="article:published_time" content="2016-08-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-08-15T00:00:00+00:00" />
+
+
+    
+      <base href="https://ravinpoudel.github.io/posts/unixoneliner/">
+    
+    <title>
+  UNIX/Linux One Liner for Bioinformatics · Ravin Poudel
+</title>
+
+    
+      <link rel="canonical" href="https://ravinpoudel.github.io/posts/unixoneliner/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://ravinpoudel.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://ravinpoudel.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Ravin Poudel
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/publications/">Publications</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/contact/">Contact</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/images/RavinPoudel.pdf">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">UNIX/Linux One Liner for Bioinformatics</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2016-08-15T00:00:00Z'>
+                August 15, 2016
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              7-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/programming/">Programming</a>
+      <span class="separator">•</span>
+    <a href="/tags/bash/">Bash</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Some of the handy UNIX/Linux one liner for bioinformatics.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Find all the file name with specific pattern and copy to a folder</span>
+find data/ -type f -name <span style="color:#e6db74">&#34;S[0-9]*.tsv&#34;</span> | xargs -i cp <span style="color:#f92672">{}</span> sparccOutput/
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Find any files with particular pattern inside all directories</span>
+grep --recursive --ignore-case --files-with-matches <span style="color:#e6db74">&#34;CANCELLED&#34;</span> Root_RST-04-106/
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Count the number of files within a folder.</span>
+ls -F |grep -v / | wc -l
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#  List just the names of matching files</span>
+grep -l <span style="color:#e6db74">&#39;main&#39;</span> *.c
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Search directories recursively. Search for all the files under the directory  &#39;/home/Rootstocks&#39;</span>
+grep -r <span style="color:#e6db74">&#39;Maxifort&#39;</span> /home/Rootstocks
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Output context around the matching lines. Example- display header and first line of sequence for each header.</span> 
+grep -C <span style="color:#ae81ff">2</span> <span style="color:#e6db74">&#39;^&gt;&#39;</span> *
+<span style="color:#75715e"># AND grep</span>
+grep <span style="color:#e6db74">&#39;apple&#39;</span> /home/test | grep <span style="color:#e6db74">&#39;ball&#39;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Find the read length in fastq.gz file</span>
+
+zcat file.fastq.gz | awk <span style="color:#e6db74">&#39;{if(NR%4==2) print length($1)} &#39;</span> | head -1
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Find the number of reads in fastq.gz file</span>
+zgrep <span style="color:#e6db74">&#34;^@&#34;</span> file.fastq.gz | wc -l
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Find the number of reads in all the fastq.gz files within a folder</span>
+<span style="color:#66d9ef">for</span> i in <span style="color:#e6db74">`</span>ls *.fastq.gz<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span> echo <span style="color:#66d9ef">$(</span>zcat <span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span> | wc -l<span style="color:#66d9ef">)</span>/4|bc; <span style="color:#66d9ef">done</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Transfer file from local to remote cluster</span>
+scp -r nextera.fa rp3448@hpg2.rc.ufl.edu:/home/rp3448/ufrc/analysis/uvc/data
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Transfer file from remote to local computer</span>
+scp -r ravin.poudel@ceres-dtn-1.scinet.science:/project/gbru_fy18_apple_microbiome/rp_apple_microbiome/rqc_data/ .
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## count the number of read in bam file</span>
+samtools view -c R8S8.bt2.bam
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## only Mapped read</span>
+samtools view -c -F <span style="color:#ae81ff">4</span> R8S8.bt2.bam
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## only UnMapped read</span>
+samtools view -c -f <span style="color:#ae81ff">4</span> R8S8.bt2.bam
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## samtools flagstat</span>
+samtools flagstat in.sam|in.bam
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Export path so that program can be called from terminal regardless of location of script</span>
+export PATH<span style="color:#f92672">=</span>/Users/poudel/Desktop/uvc/bbmap/:$PATH
+Note: Here <span style="color:#66d9ef">for</span> example I have all the executable file <span style="color:#66d9ef">for</span> bbmap inside a folder @ Users/poudel/Desktop/uvc/bbmap/.
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># grep some line after matching the pattern of interest</span>
+sendsketch.sh spades_default_assembly/K77/final_contigs.fasta printdepth<span style="color:#f92672">=</span>t mode<span style="color:#f92672">=</span>sequence | grep -A <span style="color:#ae81ff">10</span> <span style="color:#e6db74">&#34;Rose&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## grep some line before matching the pattern of interest</span>
+sendsketch.sh spades_default_assembly/K77/final_contigs.fasta printdepth<span style="color:#f92672">=</span>t mode<span style="color:#f92672">=</span>sequence | grep -B <span style="color:#ae81ff">10</span> <span style="color:#e6db74">&#34;Rose&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Negative grep</span>
+sendsketch.sh spades_default_assembly/K77/final_contigs.fasta printdepth<span style="color:#f92672">=</span>t mode<span style="color:#f92672">=</span>sequence | grep -V <span style="color:#e6db74">&#34;Rose&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Extract fasta sequences from a file using a list in another file.</span>
+seqtk subseq contigs.fasta clean_contigs_name.txt &gt;  out.fasta
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## calculate the size of a folder</span>
+du -a Reisch-Strat-Pool-1_S1/ | cut -f1 | awk <span style="color:#e6db74">&#39;{s+=$1} END {print s}&#39;</span>
+du -a Reisch-Strat-Pool-1_S1/| cut -f1 | awk <span style="color:#e6db74">&#39;{s+=$1} END {print s}&#39;</span>
+
+<span style="color:#75715e"># As you can see in the above output, the size of the directories is displayed in bits.</span> 
+<span style="color:#75715e"># We can also display the size in human readable format.</span>
+du -ah Reisch-Strat-Pool-1_S1
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># We can also display the disk usage size only in KB, or MB, or GB.</span>
+<span style="color:#75715e"># To do so, use -k for kilobytes, -m for megabytes</span>
+
+du -k Reisch-Strat-Pool-1_S1/
+du -m Reisch-Strat-Pool-1_S1/
+
+<span style="color:#75715e"># To display the disk usage of all items including files and directories, use -a flag.</span>
+du -ah Reisch-Strat-Pool-1_S1/
+
+<span style="color:#75715e"># We can also display the size of multiple directories at once as shown below.</span>
+
+du -h Reisch-Strat-Pool-1_S1 Reisch-Strat-Pool-1_S2 Reisch-Strat-Pool-1_S3
+
+<span style="color:#75715e"># If you want to check the total disk space used by a particular directory, use the -s flag.</span>
+du -sh Reisch-Strat-Pool-1_S1
+
+<span style="color:#75715e"># To display the grand total of directories, add -c flag with du -sh command.</span>
+du -ch Downloads/ | grep total
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## converting .txt file to biome</span>
+biom convert -i HD.otu.table.txt -o HD.otu.table.biom --to-tsv--to-hdf5
+biom convert -i HD.otu.table.txt -o HD.otu.table.biom --to-hdf5
+biom convert -i Sites.otu.table.txt -o Sites.otu.table.biom --to-hdf5
+biom convert -i 145_Ck_Taxa2.Table.txt -o 145_Ck_Taxa.Table.biom --table-type <span style="color:#e6db74">&#34;OTU table&#34;</span> --to-hdf5
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## converting biome to tsv</span>
+biom convert -i feature-table.biom -o table.from_biom.txt --to-tsv
+biom convert -i feature-table.biom -o table.from_biom_w_taxonomy.txt --to-tsv --header-key taxonomy
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#75715e"># view content of a file - fasta file</span>
+ 
+ less -S test.txt
+ 
+ head -n1 test.txt
+ 
+ wc -l test.txt
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># cut</span>
+<span style="color:#75715e"># get just column 2 from a file</span>
+
+cut -f2 test.txt
+
+<span style="color:#75715e"># multiple fileds</span> 
+cut -f2,4,6 test.txt
+
+<span style="color:#75715e"># select fields and redefine the delimiter</span>
+
+cut -d <span style="color:#e6db74">&#34;,&#34;</span> -f1-4,6 test.csv
+
+cut -d <span style="color:#e6db74">&#34;:&#34;</span> -f1-4,6 test.csv
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># grep (Global Regular Expression Print)</span>
+<span style="color:#75715e"># grep is a pattern recognition tool.</span>
+grep <span style="color:#e6db74">&#34;K01121&#34;</span> test.fasta
+
+<span style="color:#75715e"># grep multiple with OR</span>
+grep <span style="color:#e6db74">&#34;gene1| gene2&#34;</span> test.fasta
+
+<span style="color:#75715e"># count the number of mating element</span>
+grep -c <span style="color:#e6db74">&#34;gene1&#34;</span> test.fasta
+</code></pre></div><p>Some example wit Stream editor - sed</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># This would output the word &#34;Rootscion&#34; because sed found the string &#34;stock&#34; in the input.</span> 
+echo Rootstock | sed <span style="color:#e6db74">&#39;s/stock/scion/&#39;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># find and replace</span>
+
+sed <span style="color:#e6db74">&#39;s/whichtermtofind/replacewithterm/&#39;</span> test.txt
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Count file with sepecific name within a folder</span>
+ls -dq *apple_* | wc -l
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Display folder size</span>
+du -sh */
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Find and copy files with matching name/pattern</span>
+find ./fungi_sparcc/ -name <span style="color:#e6db74">&#39;R*.txt&#39;</span> -exec cp -prv <span style="color:#e6db74">&#39;{}&#39;</span> <span style="color:#e6db74">&#39;/home/rp3448/ufrc/analysis/output&#39;</span> <span style="color:#e6db74">&#39;;&#39;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Take in the file name and create a same diretory and the move the file into the created folder.</span>
+<span style="color:#75715e">#!/bin/bash</span>
+<span style="color:#66d9ef">for</span> file in *; <span style="color:#66d9ef">do</span> 
+	mkdir -p -- <span style="color:#e6db74">${</span>file%.*<span style="color:#e6db74">}</span> 
+	mv -- $file <span style="color:#e6db74">${</span>file%.*<span style="color:#e6db74">}</span> 
+<span style="color:#66d9ef">done</span>
+</code></pre></div><p>awk - allows to filter, sort, and subset in linux.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># select the entry such that the value of in the third column is greater than 10</span>
+awk <span style="color:#e6db74">&#39;$3 &gt; 10&#39;</span> test.txt
+
+<span style="color:#75715e">## AND awk</span>
+
+awk <span style="color:#e6db74">&#39;$3 &gt; 10 &amp;&amp; $4 &gt; 100&#39;</span> test.txt
+
+<span style="color:#75715e">## apply mathmatical function</span>
+
+awk <span style="color:#e6db74">&#39;$3 &gt; 10 &amp;&amp; $1 &gt; $2*100&#39;</span> test.txt
+
+<span style="color:#75715e">## sum the length of a column</span>
+
+awk <span style="color:#e6db74">&#39;{countliner += $1} END {print countliner}&#39;</span> test.txt
+
+Note: Here countliner is a just a variable to store the value.
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Loops in bash</span> 
+
+<span style="color:#66d9ef">for</span> word in cat dog ukulele; <span style="color:#66d9ef">do</span>
+	echo $word;
+<span style="color:#66d9ef">done</span>
+
+
+<span style="color:#75715e"># Looping through lines of a file</span>
+<span style="color:#66d9ef">for</span> word in <span style="color:#66d9ef">$(</span>cat words.txt<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+	echo $word;
+<span style="color:#66d9ef">done</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#75715e"># Convert tab to fasta, where first column == read head -- tab deliminated file</span>
+awk <span style="color:#e6db74">&#39;{print &#34;&gt;&#34;$1&#34;\n&#34;$2}&#39;</span> p60_GeneID.txt &gt; seqs.fasta
+
+<span style="color:#75715e"># filter tab file based on matching criteria</span>
+awk <span style="color:#e6db74">&#39;{ if($4 == &#34;-&#34;) { print }}&#39;</span> match.txt
+
+awk <span style="color:#e6db74">&#39;{ if($8 &gt;= 11000000) { print }}&#39;</span> pos_cut.txt 
+
+<span style="color:#75715e">## Modify header name of fasta by add some word</span>
+awk -F <span style="color:#e6db74">&#34;i=1&#34;</span> <span style="color:#e6db74">&#39;{if (/&gt;/){print $0&#34;_rc&#34;} else print}&#39;</span> pamSeq.fasta 
+
+<span style="color:#75715e">## for any header stats with &gt;</span>
+awk -F <span style="color:#e6db74">&#34;i=1&#34;</span> <span style="color:#e6db74">&#39;{if (/&gt;Contig/){print $0&#34;_rc&#34;} else print}&#39;</span> pamSeq.fasta
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Reverse complement</span>
+seqtk seq -r in.fq &gt; out.fq
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## add a header in a txt file in terminal</span>
+awk <span style="color:#e6db74">&#39;BEGIN{print &#34;pamSeqID\tpamSeq\tstrand\tstart\tend\tpam+rb20\trb20&#34;}1&#39;</span> test.txt &gt; test2.txt
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">## Delete lines containing empty fields</span>
+
+awk <span style="color:#e6db74">&#39;$7!=&#34;&#34;&#39;</span> file &gt; final_output
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># How to  reverse a string in Unix / Linux Shell?</span>
+echo <span style="color:#e6db74">&#34;apple&#34;</span> | rev
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># How to unzip all the files with a folder at once?</span>
+find 2018-05-04/ -name <span style="color:#ae81ff">\*</span>.fna.gz -exec gunzip <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># How to add file name to the header of a fasta file.</span>
+
+awk <span style="color:#e6db74">&#39;NR==1{$0=$0&#34;|&#34;FILENAME}1&#39;</span> example.fasta
+
+<span style="color:#75715e"># If you want to add the name at the beginning:</span>
+awk <span style="color:#e6db74">&#39;/&gt;/{sub(&#34;&gt;&#34;,&#34;&amp;&#34;FILENAME&#34;_&#34;);sub(/\.fasta/,x)}1&#39;</span> example.fasta
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you want have multiple files the make a loop to ran via each file.</span>
+<span style="color:#75715e">#!/bin/bash</span>
+        <span style="color:#66d9ef">for</span> i in <span style="color:#66d9ef">$(</span> ls *.fasta<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+            echo item: $i
+     		awk <span style="color:#e6db74">&#39;/&gt;/{sub(&#34;&gt;&#34;,&#34;&amp;&#34;FILENAME&#34;_&#34;);sub(/\.fasta/,x)}1&#39;</span> $i
+        <span style="color:#66d9ef">done</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># # if you want to write to a new file</span>
+<span style="color:#75715e"># note file name must be change to different extension -otherfile it will create a non terminating condition.</span>
+
+<span style="color:#75715e">#!/bin/bash</span>
+<span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span> ls *.fna<span style="color:#66d9ef">)</span>;<span style="color:#66d9ef">do</span>
+     echo file: $file
+     fname<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>basename $file .fna<span style="color:#66d9ef">)</span>
+     echo basename: $fname
+     awk <span style="color:#e6db74">&#39;/&gt;/{sub(&#34;&gt;&#34;,&#34;&amp;&#34;FILENAME&#34;_&#34;);sub(/\.fasta/,x)}1&#39;</span> $file &gt; $fname.fasta
+<span style="color:#66d9ef">done</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#  Extract fasta sequences from a large file using a list of names</span>
+xargs faidx ESM718TK_contigs.fna &lt; list.txt
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Going to a specific line number using Less in Unix</span>
+sed -n <span style="color:#e6db74">&#39;320123&#39;</span>p filename
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you want a range then you can do:</span>
+sed -n <span style="color:#e6db74">&#39;66568198,66568199&#39;</span>p all.faa
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># If you want from a particular line to the very end then</span>
+sed -n <span style="color:#e6db74">&#39;320123,$&#39;</span>p filename
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># how to download directly from google drive.</span>
+conda install -c conda-forge gdown
+
+<span style="color:#75715e"># get the fileid for example:</span>
+https://drive.google.com/file/d/0B3llHR93L14wOXJhWXRlZjBpVUU/edit
+
+HERE: Fileid <span style="color:#f92672">==</span> 0B3llHR93L14wOXJhWXRlZjBpVUU
+
+Now use gdown to get the file
+
+gdown https://drive.google.com/uc?id<span style="color:#f92672">=</span>0B3llHR93L14wOXJhWXRlZjBpVUU
+
+NOTE:Only work on open access files <span style="color:#f92672">(</span>Anyone who has a link can View<span style="color:#f92672">)</span>. Does not work <span style="color:#66d9ef">for</span> directories.
+</code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-ravinpoudel-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+      
+        ©
+        
+          2000 -
+        
+        2020
+         Ravin Poudel 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-99029062-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

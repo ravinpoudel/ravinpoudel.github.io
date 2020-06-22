@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Ravin Poudel">
+    <meta name="description" content="Following are some of dirty little tricks (DLTs) in R that I have compiled through-out the years.">
+    <meta name="keywords" content="bioinformatics,genomics,personal">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Little Tricks in R"/>
+<meta name="twitter:description" content="Following are some of dirty little tricks (DLTs) in R that I have compiled through-out the years."/>
+
+    <meta property="og:title" content="Little Tricks in R" />
+<meta property="og:description" content="Following are some of dirty little tricks (DLTs) in R that I have compiled through-out the years." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ravinpoudel.github.io/posts/dirty_little_tricks/" />
+<meta property="article:published_time" content="2017-07-10T12:00:00+00:00" />
+<meta property="article:modified_time" content="2017-07-10T12:00:00+00:00" />
+
+
+    
+      <base href="https://ravinpoudel.github.io/posts/dirty_little_tricks/">
+    
+    <title>
+  Little Tricks in R · Ravin Poudel
+</title>
+
+    
+      <link rel="canonical" href="https://ravinpoudel.github.io/posts/dirty_little_tricks/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://ravinpoudel.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://ravinpoudel.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Ravin Poudel
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/publications/">Publications</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/contact/">Contact</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/images/RavinPoudel.pdf">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Little Tricks in R</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2017-07-10T12:00:00Z'>
+                July 10, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              8-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/r/">R</a>
+      <span class="separator">•</span>
+    <a href="/tags/little-tricks/">Little tricks</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Following are some of dirty little tricks (DLTs) in R that I have compiled through-out the years.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">   <span style="color:#75715e"># DLT-1:	Create a random matrix and provide col names and row names</span>
+   otumat<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">matrix</span>(<span style="color:#a6e22e">sample</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>, replace<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>),nrow<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+   otumat
+   <span style="color:#a6e22e">rownames</span>(otumat)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste0</span>(<span style="color:#e6db74">&#34;OTU&#34;</span>, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(otumat))
+   <span style="color:#a6e22e">colnames</span>(otumat)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste0</span>(<span style="color:#e6db74">&#34;Sample&#34;</span>, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(otumat))
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-2:	Fitting Labels </span>
+	<span style="color:#a6e22e">par</span>(las<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>) <span style="color:#75715e"># make label text perpendicular to axis</span>
+	<span style="color:#a6e22e">par</span>(mar<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>)) <span style="color:#75715e"># increase y-axis margin.</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-3:	Specify axis options within plot() </span>
+	<span style="color:#a6e22e">plot</span>(x, y, main<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span>, sub<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;subtitle&#34;</span>,
+ 	 xlab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-axis label&#34;</span>, ylab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;y-axix label&#34;</span>,
+  	xlim<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(xmin, xmax), ylim<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(ymin, ymax))
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-4:	Use the title( ) function to add labels to a plot.</span>
+	<span style="color:#a6e22e">title</span>(main<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main title&#34;</span>, sub<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sub-title&#34;</span>, 
+  	xlab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x-axis label&#34;</span>, ylab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;y-axis label&#34;</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-5: 	Add a red title and a blue subtitle. Make x and y labels 25% smaller than the default and green. </span>
+	<span style="color:#a6e22e">title</span>(main<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;My Title&#34;</span>, col.main<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;red&#34;</span>, 
+ 	sub<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;My Sub-title&#34;</span>, col.sub<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;blue&#34;</span>, 
+ 	xlab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;My X label&#34;</span>, ylab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;My Y label&#34;</span>,
+  	col.lab<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;green&#34;</span>, cex.lab<span style="color:#f92672">=</span><span style="color:#ae81ff">0.75</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-6: 	Saving tiff output in a current working fodler</span>
+	<span style="color:#a6e22e">tiff</span>(filename<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Barplot_Treatments.tiff&#34;</span>, compression<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lzw&#34;</span>);
+	<span style="color:#a6e22e">barplot</span>(<span style="color:#a6e22e">colSums</span>(input1[162<span style="color:#f92672">:</span><span style="color:#ae81ff">169</span>]), main<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Total number of retrived sequences per treatment&#34;</span>,col<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;darkblue&#34;</span>,<span style="color:#e6db74">&#34;red&#34;</span>),cex.names<span style="color:#f92672">=</span><span style="color:#ae81ff">0.8</span>, ylim<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">200000</span>),axes<span style="color:#f92672">=</span>T);
+	<span style="color:#a6e22e">dev.off</span>();
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-7: 	Remove numbering on x-axis or y-axis:</span>
+
+	<span style="color:#a6e22e">plot</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span>, xaxt<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;n&#39;</span>)
+	<span style="color:#a6e22e">plot</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span>, yaxt<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;n&#39;</span>)
+	
+	<span style="color:#75715e">#If you want to remove the labels as well:</span>
+
+	<span style="color:#a6e22e">plot</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span>, xaxt<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;n&#39;</span>, ann<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+	<span style="color:#a6e22e">plot</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span>, yaxt<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;n&#39;</span>, ann<span style="color:#f92672">=</span><span style="color:#66d9ef">FALSE</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-8</span>
+	<span style="color:#a6e22e">colnames</span>(comm)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">c</span>(comm[1,]) <span style="color:#75715e"># add first row of element as column head</span>
+	comm<span style="color:#f92672">&lt;-</span>comm[<span style="color:#f92672">-</span><span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>),] <span style="color:#75715e"># then get rid of first row now</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-9: 	How to chaneg a name of the column</span>
+  	<span style="color:#a6e22e">colnames</span>(tot_Rixo_Root)[1] <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;Barcode&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-10: Makes 1st column as rownames</span>
+	tot_Rixo_Root <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(tot_Rixo_Root[,<span style="color:#ae81ff">-1</span>], row.names<span style="color:#f92672">=</span>tot_Rixo_Root[,<span style="color:#ae81ff">1</span>]) 
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-11: 	Add new column on existing dataframe</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-12:	Compare two different matrix, and select the information from one based on common information in another.</span>
+	<span style="color:#75715e">#Format of both the object should be matirx.</span>
+	<span style="color:#75715e">#create a matrix</span>
+	mat<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">matrix</span>(<span style="color:#a6e22e">sample</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">1000</span>,replace<span style="color:#f92672">=</span>F), nrow<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>,ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+	<span style="color:#a6e22e">colnames</span>(mat)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;OTU&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(mat))
+	<span style="color:#a6e22e">rownames</span>(mat)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;Sample&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(mat))
+	<span style="color:#75715e">#random 50 sample </span>
+	subsample<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;Sample&#34;</span>,<span style="color:#a6e22e">sample</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">50</span>,replace<span style="color:#f92672">=</span>F))
+	<span style="color:#75715e"># select those elements in matrix (mat), that are in subsample</span>
+	select<span style="color:#f92672">&lt;-</span>mat[subsample,which<span style="color:#f92672">=</span>T]
+	<span style="color:#75715e">#####</span>
+	selectmeta<span style="color:#f92672">&lt;-</span>metadata<span style="color:#a6e22e">[rownames</span>(inaa),which<span style="color:#f92672">=</span>T]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT -13</span>
+	<span style="color:#75715e">#Required packages</span>
+	<span style="color:#75715e"># ipak function: install and load multiple R packages.</span>
+	<span style="color:#75715e"># check to see if packages are installed. Install them if they are not, then load them into the R session.</span>
+
+	ipak <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(pkg){
+ 	 new.pkg <span style="color:#f92672">&lt;-</span> pkg[<span style="color:#f92672">!</span>(pkg <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">installed.packages</span>()[, <span style="color:#e6db74">&#34;Package&#34;</span>])]
+ 	 <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(new.pkg))
+   	 <span style="color:#a6e22e">install.packages</span>(new.pkg, dependencies <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+  	<span style="color:#a6e22e">sapply</span>(pkg, require, character.only <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+	}
+	
+	<span style="color:#75715e"># usage</span>
+	packages <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;permute&#34;</span>,<span style="color:#e6db74">&#34;lattice&#34;</span>,<span style="color:#e6db74">&#34;vegan&#34;</span>,<span style="color:#e6db74">&#34;nlme&#34;</span>,<span style="color:#e6db74">&#34;ggplot2&#34;</span>,<span style="color:#e6db74">&#34;reshape&#34;</span>,<span style="color:#e6db74">&#34;ape&#34;</span>,<span style="color:#e6db74">&#34;sparcl&#34;</span>,<span style="color:#e6db74">&#34;ggdendro&#34;</span>,<span style="color:#e6db74">&#34;indicspecies&#34;</span>,<span style="color:#e6db74">&#34;VennDiagram&#34;</span>)
+	<span style="color:#a6e22e">ipak</span>(packages) 
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-14</span>
+	<span style="color:#75715e">#Usage: Save the lines running in the R command lines modules </span>
+	<span style="color:#75715e">#combined Root_Rhizo_Trtment</span>
+	groups_root_rhizo<span style="color:#f92672">&lt;-</span>metadata[,<span style="color:#ae81ff">1</span>] <span style="color:#75715e">## this only change</span>
+	groups_root_rhizo<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">as.character</span>(groups_root_rhizo)
+	p1<span style="color:#f92672">&lt;-</span>trt_data
+	<span style="color:#a6e22e">colnames</span>(p1)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste0</span>(tax<span style="color:#f92672">$</span>Phylum, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(p1))
+	indic_sp_comp<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">multipatt</span>(p1,groups_root_rhizo,control<span style="color:#f92672">=</span><span style="color:#a6e22e">how</span>(nper<span style="color:#f92672">=</span><span style="color:#ae81ff">999</span>))
+	<span style="color:#a6e22e">summary</span>(indic_sp_comp)
+	<span style="color:#a6e22e">summary</span>(indic_sp_comp,alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)<span style="color:#75715e"># to display all the indicator species</span>
+	<span style="color:#a6e22e">options</span>(max.print<span style="color:#f92672">=</span><span style="color:#ae81ff">999999</span>) <span style="color:#75715e">## helps if you have lost list to print</span>
+	<span style="color:#a6e22e">sink</span>(<span style="color:#e6db74">&#34;indic_sp_trtrmentwise.txt&#34;</span>) <span style="color:#75715e">## write output in txt file format</span>
+	<span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">summary</span>(indic_sp_comp,alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>))
+	<span style="color:#a6e22e">sink</span>();
+	<span style="color:#a6e22e">sink</span>(<span style="color:#e6db74">&#34;indic_sp_trtmentwise_sign.txt&#34;</span>)
+	<span style="color:#a6e22e">print</span>(indic_sp_comp<span style="color:#f92672">$</span>sign)
+	<span style="color:#a6e22e">sink</span>();
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># DLT-15</span>
+	<span style="color:#75715e">#Usage: saving output as a defined format from command:</span>
+	<span style="color:#75715e"># Writing to file</span>
+	<span style="color:#a6e22e">tiff</span>(filename <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Root_Trt_Quad_Venn_diagram.tiff&#34;</span>, compression <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lzw&#34;</span>);
+	<span style="color:#a6e22e">grid.draw</span>(venn.plot);
+	<span style="color:#a6e22e">dev.off</span>();
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-16</span>
+	<span style="color:#75715e">## Use this to dump the cor.prob output to a 4 column matrix</span>
+	<span style="color:#75715e">## with row/column indices, correlation, and p-value.</span>
+	<span style="color:#75715e">## See StackOverflow question: http://goo.gl/fCUcQ</span>
+	flattenSquareMatrix <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(m) {
+ 	 <span style="color:#a6e22e">if</span>( (<span style="color:#a6e22e">class</span>(m) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;matrix&#34;</span>) <span style="color:#f92672">|</span> (<span style="color:#a6e22e">nrow</span>(m) <span style="color:#f92672">!=</span> <span style="color:#a6e22e">ncol</span>(m))) <span style="color:#a6e22e">stop</span>(<span style="color:#e6db74">&#34;Must be a square matrix.&#34;</span>)
+  	<span style="color:#a6e22e">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">identical</span>(<span style="color:#a6e22e">rownames</span>(m), <span style="color:#a6e22e">colnames</span>(m))) <span style="color:#a6e22e">stop</span>(<span style="color:#e6db74">&#34;Row and column names must be equal.&#34;</span>)
+  	ut <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">upper.tri</span>(m)
+  	<span style="color:#a6e22e">data.frame</span>(i <span style="color:#f92672">=</span> <span style="color:#a6e22e">rownames</span>(m)<span style="color:#a6e22e">[row</span>(m)[ut]],
+            	 j <span style="color:#f92672">=</span> <span style="color:#a6e22e">rownames</span>(m)<span style="color:#a6e22e">[col</span>(m)[ut]],
+            	 cor<span style="color:#f92672">=</span><span style="color:#a6e22e">t</span>(m)[ut],
+            	 p<span style="color:#f92672">=</span>m[ut])
+	}
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-17</span>
+	<span style="color:#75715e"># Find any [i,j], replace with 0 if the value is less than 50</span>
+	<span style="color:#a6e22e">for</span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(mat)){
+ 	 count<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">0</span>
+  	<span style="color:#a6e22e">for </span>(j in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(mat)){
+   	 <span style="color:#a6e22e">if </span>(count<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ncol</span>(mat))
+      	<span style="color:#a6e22e">if </span>(mat[i,j]<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">5</span>) 
+       	 mat[i,j]<span style="color:#f92672">=</span>mat[i,j]<span style="color:#f92672">*</span><span style="color:#ae81ff">0</span>
+    	count<span style="color:#f92672">=</span>count<span style="color:#ae81ff">+1</span>
+	}}
+	mat
+	orgmat
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">
+	<span style="color:#75715e">#DLT-18</span>
+	<span style="color:#75715e">#oddcount from the list of numbers</span>
+	foddcount<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">function</span>(x){
+ 	 count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+  	<span style="color:#a6e22e">for</span>(i in x){
+   	 <span style="color:#a6e22e">if </span>(i<span style="color:#f92672">%%</span><span style="color:#ae81ff">2</span><span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>)
+      	count<span style="color:#f92672">=</span>count<span style="color:#ae81ff">+1</span>}
+  	<span style="color:#a6e22e">return</span>(count)
+	}
+	<span style="color:#a6e22e">foddcount</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>))
+	
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-19</span>
+	<span style="color:#75715e">#Usage: arrange each column of matrix and select only the top most one</span>
+	mat<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">matrix</span>(<span style="color:#a6e22e">sample</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>,replace<span style="color:#f92672">=</span>F), ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>,nrow<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+	<span style="color:#a6e22e">colnames</span>(mat)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;Sample&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(mat))
+	<span style="color:#a6e22e">rownames</span>(mat)<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;OTU&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(mat))
+	orgmat<span style="color:#f92672">&lt;-</span>mat
+	mat
+	
+	<span style="color:#75715e"># selecting top five OTUs from each sample for analysis</span>
+	<span style="color:#75715e">#note OTU label changed</span>
+	<span style="color:#a6e22e">for</span>(c in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(mat)){
+ 	 mat[,c]<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">sort</span>(mat[,c], decreasing<span style="color:#f92672">=</span>T)
+	}
+	top5<span style="color:#f92672">&lt;-</span>mat[1<span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>,]
+	top5
+
+	<span style="color:#75715e"># selecting top five sample from each OTU for analysis</span>
+	<span style="color:#75715e">#note sample name changed from original</span>
+	<span style="color:#a6e22e">for</span>(r in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(mat)){
+ 	 mat[r,]<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">sort</span>(mat[r,], decreasing<span style="color:#f92672">=</span>T)
+	}
+	top5OTU<span style="color:#f92672">&lt;-</span>mat[,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>]
+	top5OTU
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">
+	<span style="color:#75715e">#DLT-20</span>
+	<span style="color:#75715e">#create a random matrix and replace its value from other matrix </span>
+	<span style="color:#75715e">#dm==dummy matrix</span>
+	dm<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">matrix</span>(<span style="color:#ae81ff">0</span>,ncol<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>,nrow<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+	<span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(mat)){
+ 	 n<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">0</span>
+  	<span style="color:#a6e22e">for </span>(j in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(mat)){
+    	<span style="color:#a6e22e">if</span>(n <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">ncol</span>(mat))
+     	 <span style="color:#a6e22e">if</span>(mat[i,j]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">40</span>) 
+				dm[i,j]<span style="color:#f92672">=</span>mat[i,j]
+					else
+						dm[i,j]<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>
+   	 n<span style="color:#f92672">=</span>n<span style="color:#ae81ff">+1</span>
+  	}}
+	dm
+	mat
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-21</span>
+	<span style="color:#a6e22e">library</span>(<span style="color:#e6db74">&#34;qgraph&#34;</span>)
+	x1cor <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">corr.test</span>(datac2, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spearman&#39;</span>, adjust<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hochberg&#39;</span>)
+	Q<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">qgraph</span>(<span style="color:#a6e22e">cor</span>(datac2),layout<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;spring&#34;</span>,posCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>,negCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;blue&#39;</span>,vsize<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+	<span style="color:#a6e22e">title</span>(<span style="color:#e6db74">&#34;correlation network for KONZA 2006&#34;</span>,line<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,cex <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>)
+
+	<span style="color:#75715e"># Get the matrix of p value and make the diagnol as zero inorder to get rid of self loop in the network</span>
+	k3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forceSymmetric</span>(x1cor<span style="color:#f92672">$</span>p)             
+	<span style="color:#a6e22e">diag</span>(k3)<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+
+	<span style="color:#75715e"># inorder to plot only the significantly corerelated links, make p vlaue less than or equal as 1 else 0</span>
+	<span style="color:#75715e">#later on multiply p value matrix and correlation matrix to selet those corelation that are significant</span>
+
+	<span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">nrow</span>(k3)){
+ 	 count<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+  	<span style="color:#a6e22e">for </span>(j in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(k3)){
+   	 <span style="color:#a6e22e">if </span>(count<span style="color:#f92672">&lt;=</span><span style="color:#a6e22e">ncol</span>(k3))
+      	<span style="color:#a6e22e">if </span>(k3[i,j]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0.05</span>) k3[i,j]<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span> else k3[i,j]<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+    	count<span style="color:#f92672">=</span>count<span style="color:#ae81ff">+1</span>
+ 	 }}
+	p.yes<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">matrix</span>(<span style="color:#a6e22e">as.numeric</span>(k3),nrow<span style="color:#f92672">=</span><span style="color:#a6e22e">nrow</span>(k3),ncol<span style="color:#f92672">=</span><span style="color:#a6e22e">ncol</span>(k3)) <span style="color:#75715e"># make sure that matrix is numeric</span>
+
+	<span style="color:#75715e">#multiple r matirx and p matrix </span>
+	final<span style="color:#f92672">=</span>p.yes<span style="color:#f92672">*</span>x1cor<span style="color:#f92672">$</span>r
+
+	<span style="color:#75715e"># save the upper triangle in the form of i j and r column csv file.that can be input for gephi edge file.</span>
+	<span style="color:#a6e22e">qgraph</span>(final,posCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>,negCol<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;blue&#39;</span>,vsize<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,layout<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;spring&#34;</span>) 
+	<span style="color:#a6e22e">title</span>(<span style="color:#e6db74">&#34;correlation network for KONZA 2006 with p-value&lt;=5%&#34;</span>,line<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,cex <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>)
+
+
+	<span style="color:#75715e"># final matrix has upper triangle and lower triangle. UT has values for multiple test, whereas the LT is not adjusted fro multiple tests.</span>
+	<span style="color:#75715e">#if we want to save the UT as a dataframe containing the significnatly corerelated taxa then code in DLT-16 can be used </span>
+	<span style="color:#75715e">#call function &#34;flattenSquareMatrix&#34;</span>
+
+	outcor<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">flattenSquareMatrix</span>(final)
+	<span style="color:#a6e22e">write.csv</span>(outcor,file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sig correlated taxa.csv&#34;</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-22</span>
+	<span style="color:#75715e">#how to select the information that we want from multiple columns in a matrix</span>
+	Root_trt_named<span style="color:#f92672">&lt;-</span>Root_trt
+	<span style="color:#a6e22e">colnames</span>(Root_trt_named)<span style="color:#f92672">&lt;-</span>tax<span style="color:#f92672">$</span>Class <span style="color:#75715e">## taxonmy chooses as class...can be any other level as well</span>
+	example1<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">t</span>(Root_trt_named)
+	n12<span style="color:#f92672">&lt;-</span>example1[,<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span> example1[,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+	dn12<span style="color:#f92672">&lt;-</span>example1[n12<span style="color:#f92672">==</span>T,]
+	<span style="color:#a6e22e">head</span>(dn12)
+	<span style="color:#a6e22e">dim</span>(dn12)
+	cn12<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">rownames</span>(dn12))
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-23</span>
+	<span style="color:#75715e">#take in txt file with tab and write it to .csv file format</span>
+	kk
+	<span style="color:#a6e22e">write.csv</span>(kk, file <span style="color:#f92672">=</span> <span style="color:#a6e22e">paste</span>(<span style="color:#e6db74">&#34;file.csv&#34;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>)) 
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-24</span>
+	<span style="color:#75715e"># How to download file from dropbox as a HTML input</span>
+	<span style="color:#75715e">#allows you to access data from web even in the computer that doesnot have your dropbox file.</span>
+	<span style="color:#75715e">#no sweat to download and save file..can be directly linked</span>
+	<span style="color:#75715e">#handy for other people to run the code...</span>
+
+	<span style="color:#a6e22e">install.packages</span>(<span style="color:#e6db74">&#34;repmis&#34;</span>)
+	<span style="color:#a6e22e">library</span>(repmis)
+
+
+	<span style="color:#75715e"># select the file you want to link from dropbox.....link can be copied from online dropbox</span>
+	<span style="color:#75715e">##    https://www.dropbox.com/s/8mxbszwjvodx472/All_included_except_olathe2_metadata.csv?dl=0</span>
+	<span style="color:#75715e">#file name == All_included_except_olathe2_metadata.csv</span>
+	<span style="color:#75715e"># key== 8mxbszwjvodx472</span>
+
+
+	DropboxURL <span style="color:#f92672">&lt;-</span><span style="color:#e6db74">&#34;https://www.dropbox.com/s/8mxbszwjvodx472/all_included_except_olathe2_metadata.csv?dl=0&#34;</span>
+
+	<span style="color:#75715e"># Download data</span>
+	DownloadDropboxData<span style="color:#f92672">&lt;-</span>repmis<span style="color:#f92672">::</span><span style="color:#a6e22e">source_data</span>(DropboxURL, sep <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;,&#34;</span>, header<span style="color:#f92672">=</span>T)
+
+
+	<span style="color:#75715e">#OR followign can be done with specifying filename, key</span>
+	DownloadDropboxData<span style="color:#f92672">&lt;-</span>repmis<span style="color:#f92672">::</span><span style="color:#a6e22e">source_DropboxData</span>(<span style="color:#e6db74">&#34;All_included_except_olathe2_metadata.csv&#34;</span>, <span style="color:#e6db74">&#34;8mxbszwjvodx472&#34;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;,&#34;</span>, header<span style="color:#f92672">=</span>T)
+
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-25 # t test manually</span>
+	Textbook Problems
+
+	In textbook problems, we are often not given the raw data but only summary statistics. R does not provide a mechanism for dealing with this, other than doing the calculations by hand at the command line...
+       A random sample of <span style="color:#ae81ff">130</span> human beings was taken, and the oral body
+       temperature of each was measured. The sample mean was <span style="color:#ae81ff">98.25</span> degrees
+       Fahrenheit, with a standard deviation of <span style="color:#ae81ff">0.7332</span>. Test the null
+       hypothesis that the mean human body temperature is <span style="color:#ae81ff">98.6</span> degrees.
+
+	t.obt <span style="color:#f92672">=</span> (<span style="color:#ae81ff">98.25</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">98.6</span>) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">.7332</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">sqrt</span>(<span style="color:#ae81ff">130</span>))
+	t.obt
+	<span style="color:#75715e">#[1] -5.442736</span>
+	<span style="color:#a6e22e">qt</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">.025</span>,<span style="color:#ae81ff">.975</span>),df<span style="color:#f92672">=</span><span style="color:#ae81ff">129</span>)              <span style="color:#75715e">### critical values, alpha=.05</span>
+	<span style="color:#75715e">#[1] -1.978524  1.978524</span>
+	<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">pt</span>(t.obt,df<span style="color:#f92672">=</span><span style="color:#ae81ff">129</span>)                 <span style="color:#75715e">### two-tailed p-value</span>
+	<span style="color:#75715e">#[1] 2.547478e-07</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">
+	<span style="color:#75715e">#DLT-26 #### function that takes data.frame, and convert into matrix with retaining column and row names.</span>
+	retain_rcMat<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">function</span>(x) {
+	  m<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">as.matrix</span>(x[,<span style="color:#ae81ff">-1</span>])
+  	<span style="color:#a6e22e">rownames</span>(m)<span style="color:#f92672">&lt;-</span>x[,<span style="color:#ae81ff">1</span>]
+  	m
+	}
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">#DLT-27 #### Ways to plot combination of factors utlizing loop</span>
+	<span style="color:#75715e">## excellent ways to rename the output grapgh with the name from a vector object containign multipel element.</span>
+
+	method<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;NMDS&#34;</span>,<span style="color:#e6db74">&#34;DCA&#34;</span>,<span style="color:#e6db74">&#34;CCA&#34;</span>,<span style="color:#e6db74">&#34;RDA&#34;</span>,<span style="color:#e6db74">&#34;DPCoA&#34;</span>,<span style="color:#e6db74">&#34;MDS&#34;</span>,<span style="color:#e6db74">&#34;PCoA&#34;</span>)
+	distance<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;bray&#34;</span>,<span style="color:#e6db74">&#34;uunifrac&#34;</span>,<span style="color:#e6db74">&#34;jaccard&#34;</span>, <span style="color:#e6db74">&#34;wunifrac&#34;</span>,<span style="color:#e6db74">&#34;gower&#34;</span>,<span style="color:#e6db74">&#34;dpcoa&#34;</span>,<span style="color:#e6db74">&#34;jsd&#34;</span>,<span style="color:#e6db74">&#34;jaccard&#34;</span>)
+	<span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(method)){	
+		<span style="color:#a6e22e">for </span>(j in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(distance)){
+				GP.ord2<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">ordinate</span>(physeq1, method[i], distance[j])
+    			p2 <span style="color:#f92672">=</span> <span style="color:#a6e22e">plot_ordination</span>(physeq1, GP.ord2, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;samples&#34;</span>, color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Treatment&#34;</span>, shape <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Location&#34;</span>)
+				<span style="color:#a6e22e">plot </span>(p2 <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_polygon</span>(<span style="color:#a6e22e">aes</span>(fill <span style="color:#f92672">=</span> Region)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_point</span>(size <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">ggtitle</span>(<span style="color:#a6e22e">paste</span>(method[i],<span style="color:#e6db74">&#39;method with&#39;</span>, distance[j], <span style="color:#e6db74">&#39;distance&#39;</span>)))}}
+			
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e">##DLT- 28 : sum of only four element of a vector at a time.</span>
+	n1<span style="color:#f92672">&lt;-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">200</span>
+	s1<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0</span>,(<span style="color:#a6e22e">length</span>(n1)<span style="color:#f92672">/</span><span style="color:#ae81ff">4</span>))
+	a<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+	b<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+	<span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>(<span style="color:#a6e22e">length</span>(n1)<span style="color:#f92672">/</span><span style="color:#ae81ff">4</span>)){
+ 	s1[i]<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">sum</span>(n1[a<span style="color:#f92672">:</span>b])
+ 	a<span style="color:#f92672">=</span>a<span style="color:#ae81ff">+4</span>
+	 b<span style="color:#f92672">=</span>b<span style="color:#ae81ff">+4</span>
+	}
+	
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">	<span style="color:#75715e"># packages</span>
+	<span style="color:#a6e22e">install.packages</span>(<span style="color:#e6db74">&#34;igraph&#34;</span>)
+	<span style="color:#a6e22e">library</span>(igraph)
+
+	<span style="color:#75715e"># set working directory to directory where TCGA_prostate_RPPA.txt was downloaded</span>
+	<span style="color:#75715e"># setwd(&#34;Desktop/3S_2014/&#34;)  (just an example)</span>
+
+	<span style="color:#75715e"># read matrix in</span>
+	m <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read.table</span>(<span style="color:#e6db74">&#34;TCGA_prostate_RPPA.txt&#34;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\t&#34;</span>, row.names<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, header<span style="color:#f92672">=</span>T)
+
+	<span style="color:#75715e"># exploration - what does data look like ?</span>
+	<span style="color:#75715e"># how many rows and columns ?</span>
+	<span style="color:#75715e"># overall distribution of data points (columns)</span>
+	<span style="color:#75715e"># visualize</span>
+
+	<span style="color:#75715e"># get number of rows</span>
+	<span style="color:#a6e22e">dim</span>(m) 
+
+	<span style="color:#75715e"># boxplot of columns</span>
+	<span style="color:#a6e22e">boxplot</span>(m)
+
+	<span style="color:#75715e"># heatmap</span>
+	<span style="color:#a6e22e">heatmap</span>(<span style="color:#a6e22e">as.matrix</span>(m))
+
+	<span style="color:#75715e"># column correlation matrix</span>
+	cormat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cor</span>(<span style="color:#a6e22e">t</span>(m))
+
+	<span style="color:#75715e"># set diagnonal to 0 (removes self-correlation)</span>
+	<span style="color:#a6e22e">diag</span>(cormat) <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0</span>
+
+	<span style="color:#75715e"># EXERCISE: what does the histogram of correlations looks like ? is there a natural threshold ?</span>
+
+	<span style="color:#75715e"># set all correlation &lt; 0.7 to 0</span>
+	cormat[ cormat <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.7</span> ] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">0</span>
+
+	<span style="color:#75715e"># igraph: create graph based on adjacency matrix</span>
+	graph <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">graph.adjacency</span>(cormat, weighted<span style="color:#f92672">=</span><span style="color:#66d9ef">TRUE</span>, mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lower&#34;</span>)
+
+	<span style="color:#75715e"># how many nodes ?</span>
+	<span style="color:#a6e22e">vcount</span>(graph)
+
+	<span style="color:#75715e"># how many edges</span>
+	<span style="color:#a6e22e">ecount</span>(graph)
+
+	<span style="color:#75715e"># display nodes (vertices)</span>
+	<span style="color:#a6e22e">V</span>(graph)
+
+	<span style="color:#75715e"># display edges</span>
+	<span style="color:#a6e22e">E</span>(graph)
+
+	<span style="color:#75715e"># igraph: plot graph</span>
+	<span style="color:#a6e22e">plot.igraph</span>(graph,vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, layout<span style="color:#f92672">=</span>layout.lgl, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, vertex.label<span style="color:#f92672">=</span><span style="color:#66d9ef">NA</span>)
+
+	<span style="color:#75715e"># igraph: change layout</span>
+	<span style="color:#a6e22e">plot.igraph</span>(graph,vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, vertex.label<span style="color:#f92672">=</span><span style="color:#66d9ef">NA</span>)
+
+	<span style="color:#75715e"># set color of node 1 to red</span>
+	<span style="color:#a6e22e">V</span>(graph)[1]<span style="color:#f92672">$</span>color <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;red&#34;</span>
+
+	<span style="color:#75715e"># replot (can you see the red colored node)</span>
+	<span style="color:#a6e22e">plot.igraph</span>(graph,vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, vertex.label<span style="color:#f92672">=</span><span style="color:#66d9ef">NA</span>)
+
+	<span style="color:#75715e"># add node names</span>
+	<span style="color:#a6e22e">plot.igraph</span>(graph,vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, vertex.label.dist<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>)
+
+	<span style="color:#75715e"># EXERCISE: try different graph layouts</span>
+	<span style="color:#75715e"># layout.fruchterman.reingold</span>
+	<span style="color:#75715e"># layout.mds</span>
+	<span style="color:#75715e"># layout.circle</span>
+	<span style="color:#75715e"># etc</span>
+
+	<span style="color:#75715e"># get degree for each node</span>
+	<span style="color:#a6e22e">degree</span>(graph)
+
+	<span style="color:#75715e"># histogram of degrees</span>
+	<span style="color:#a6e22e">hist</span>(<span style="color:#a6e22e">degree</span>(graph))
+
+	<span style="color:#75715e"># plot again</span>
+	<span style="color:#a6e22e">plot.igraph</span>(graph,vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, vertex.label.dist<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>)
+
+	<span style="color:#75715e"># find clusters of nodes (connected components) </span>
+	cl <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">clusters</span>(graph)
+
+	<span style="color:#75715e"># look at object</span>
+	cl
+
+	<span style="color:#75715e"># get a color pallete, one for each cluster</span>
+	col <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rainbow</span>(cl<span style="color:#f92672">$</span>no)
+
+	<span style="color:#75715e"># assign color to node based on cluster membership</span>
+	<span style="color:#a6e22e">V</span>(graph)<span style="color:#f92672">$</span>color <span style="color:#f92672">&lt;-</span> col[cl<span style="color:#f92672">$</span>membership<span style="color:#ae81ff">+1</span>]
+
+	<span style="color:#75715e"># plot</span>
+	<span style="color:#a6e22e">plot.igraph</span>(graph, vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, vertex.label.dist<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>)
+
+	<span style="color:#75715e"># here we are going to remove isolated nodes</span>
+
+	<span style="color:#75715e"># #identify isolated nodes</span>
+	bad.vs<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">V</span>(graph)<span style="color:#a6e22e">[degree</span>(graph) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>] 
+
+	<span style="color:#75715e"># remove isolated nodes</span>
+	graph <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">delete.vertices</span>(graph, bad.vs)
+
+	<span style="color:#75715e"># show remaining nodes</span>
+	<span style="color:#a6e22e">V</span>(graph)
+
+	<span style="color:#75715e"># show edges</span>
+	<span style="color:#a6e22e">E</span>(graph)
+
+	<span style="color:#75715e"># get connected components in a list</span>
+	modules <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">decompose.graph</span>(graph)
+
+	<span style="color:#75715e"># plot second component only</span>
+	<span style="color:#a6e22e">plot.igraph</span>(modules[[ <span style="color:#ae81ff">1</span> ] ], layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.dist<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+
+	<span style="color:#75715e"># find largest connected component (module)</span>
+	largest <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">which.max</span>(<span style="color:#a6e22e">sapply</span>(modules, vcount))
+
+	<span style="color:#75715e"># plot largest module</span>
+	<span style="color:#a6e22e">plot</span>(modules[[largest]], layout<span style="color:#f92672">=</span>layout.fruchterman.reingold, vertex.label.dist<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+
+	<span style="color:#75715e"># EXERCISE: change correlation threshold to 0.6, redraw graph, find best layout</span>
+
+	<span style="color:#75715e"># install and lood library</span>
+	<span style="color:#a6e22e">install.packages</span>(<span style="color:#e6db74">&#34;GeneNet&#34;</span>)
+	<span style="color:#a6e22e">library</span>(GeneNet)
+
+	<span style="color:#75715e"># partial correlation matrix</span>
+	pcormat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ggm.estimate.pcor</span>(<span style="color:#a6e22e">t</span>(m))
+
+	<span style="color:#75715e">#</span>
+	t.edges <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ggm.test.edges</span>(pcormat, plot<span style="color:#f92672">=</span>F)
+
+	<span style="color:#75715e"># get network</span>
+	t.net <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">extract.network</span>(t.edges, cutoff.ggm<span style="color:#f92672">=</span><span style="color:#ae81ff">0.9</span>)
+
+	<span style="color:#75715e"># look at it</span>
+	t.net
+
+	<span style="color:#75715e"># get igraph object</span>
+	t.graph <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ggm.make.igraph</span>(t.net, <span style="color:#a6e22e">rownames</span>(m))
+
+	<span style="color:#75715e"># make </span>
+	<span style="color:#a6e22e">plot.igraph</span>(t.graph,vertex.size<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>,layout<span style="color:#f92672">=</span>layout.kamada.kawai, vertex.label.cex<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+
+	<span style="color:#75715e"># degree</span>
+	<span style="color:#a6e22e">degree</span>(graph)
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e"># how to install old version of library in R</span>
+<span style="color:#a6e22e">library</span>(versions)
+<span style="color:#a6e22e">install.versions</span>(<span style="color:#e6db74">&#34;igraph&#34;</span>, version<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1.1.1&#39;</span>)
+
+</code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-ravinpoudel-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ['$', '$'], ['\\(', '\\)']
+        ],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+      
+        ©
+        
+          2000 -
+        
+        2020
+         Ravin Poudel 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-99029062-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

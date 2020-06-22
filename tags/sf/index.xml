@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sf on Ravin Poudel</title>
+    <link>https://ravinpoudel.github.io/tags/sf/</link>
+    <description>Recent content in sf on Ravin Poudel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; 2017 Ravin Poudel</copyright>
+    <lastBuildDate>Mon, 17 Mar 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ravinpoudel.github.io/tags/sf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Comparing fungal communities using a network approach.</title>
+      <link>https://ravinpoudel.github.io/projects/soil_fungal/</link>
+      <pubDate>Mon, 17 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/projects/soil_fungal/</guid>
+      <description>Comparing fungal communities using a network approach.</description>
+    </item>
+    
+  </channel>
+</rss>

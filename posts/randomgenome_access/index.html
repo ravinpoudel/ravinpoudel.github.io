@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Ravin Poudel">
+    <meta name="description" content="Question &ndash; How to extract specific sequences from a big FASTA file? Getting random access to a fasta or sequene file is often needed for bioinformatics analyses. Multiple random access to a large fasta file could slow the process a lot. Compute time is worst with the fasta file of large size. Following are some of the techniques that could be useful, depending upon the size of fasta file- from few mb to few gb.">
+    <meta name="keywords" content="bioinformatics,genomics,personal">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Extract specific sequences from a big FASTA file"/>
+<meta name="twitter:description" content="Question &ndash; How to extract specific sequences from a big FASTA file? Getting random access to a fasta or sequene file is often needed for bioinformatics analyses. Multiple random access to a large fasta file could slow the process a lot. Compute time is worst with the fasta file of large size. Following are some of the techniques that could be useful, depending upon the size of fasta file- from few mb to few gb."/>
+
+    <meta property="og:title" content="Extract specific sequences from a big FASTA file" />
+<meta property="og:description" content="Question &ndash; How to extract specific sequences from a big FASTA file? Getting random access to a fasta or sequene file is often needed for bioinformatics analyses. Multiple random access to a large fasta file could slow the process a lot. Compute time is worst with the fasta file of large size. Following are some of the techniques that could be useful, depending upon the size of fasta file- from few mb to few gb." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ravinpoudel.github.io/posts/randomgenome_access/" />
+<meta property="article:published_time" content="2020-03-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-15T00:00:00+00:00" />
+
+
+    
+      <base href="https://ravinpoudel.github.io/posts/randomgenome_access/">
+    
+    <title>
+  Extract specific sequences from a big FASTA file · Ravin Poudel
+</title>
+
+    
+      <link rel="canonical" href="https://ravinpoudel.github.io/posts/randomgenome_access/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://ravinpoudel.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://ravinpoudel.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Ravin Poudel
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/publications/">Publications</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/projects/">Projects</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/contact/">Contact</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://ravinpoudel.github.io/images/RavinPoudel.pdf">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Extract specific sequences from a big FASTA file</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-15T00:00:00Z'>
+                March 15, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/python/">Python</a>
+      <span class="separator">•</span>
+    <a href="/tags/bioinformatics/">Bioinformatics</a>
+      <span class="separator">•</span>
+    <a href="/tags/biopython/">Biopython</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="question----how-to-extract-specific-sequences-from-a-big-fasta-file">Question &ndash; How to extract specific sequences from a big FASTA file?</h2>
+<p>Getting random access to a fasta or sequene file is often needed for bioinformatics analyses. Multiple random access to a large fasta file could slow the process a lot. Compute time is worst with the fasta file of large size. Following are some of the techniques that could be useful, depending upon the size of fasta file- from few mb to few gb.</p>
+<ol>
+<li>Using <code>SeqIO.index</code> from <code>Biopython</code>. - works great for small genome - e.g. bacterial genomes</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> Bio <span style="color:#f92672">import</span> SeqIO
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+
+
+<span style="color:#75715e"># input fasta file</span>
+fastafile <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bacterialgenome.fasta&#34;</span>
+
+<span style="color:#75715e"># Suppose, we have a list with sequence header of intesst, that we want to subset.</span>
+seqoi <span style="color:#f92672">=</span> set(pd<span style="color:#f92672">.</span>read_csv (<span style="color:#e6db74">&#39;goi.csv&#39;</span>)[<span style="color:#e6db74">&#39;fsrA&#39;</span>]<span style="color:#f92672">.</span>to_list())
+
+<span style="color:#75715e"># index fasta file, allows for fast access</span>
+record_dict <span style="color:#f92672">=</span> SeqIO<span style="color:#f92672">.</span>index(fastafile, <span style="color:#e6db74">&#34;fasta&#34;</span>)
+ 
+<span style="color:#75715e"># retrive reads/seqrecord from fasta file, based on header in seqoi</span>
+sample_fasta <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> header <span style="color:#f92672">in</span> seqoi:
+    sample_fasta<span style="color:#f92672">.</span>append(record_dict[header])
+ 
+<span style="color:#75715e"># write down as a fasta file</span>
+SeqIO<span style="color:#f92672">.</span>write(sample_fasta, <span style="color:#e6db74">&#34;subset.fasta&#34;</span> , <span style="color:#e6db74">&#34;fasta&#34;</span>)
+
+</code></pre></div><ol start="2">
+<li>faidx or pyfaidx &ndash; indexing takes a lot of time, seems to use only single thread, works great for small genomes.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># bash one liner</span> 
+xargs faidx bacterialgenome.fasta &lt; list.txt &gt; subset.fasta
+
+</code></pre></div><p>OR in <code>python</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> Bio <span style="color:#f92672">import</span> SeqIO
+<span style="color:#f92672">from</span> pyfaidx <span style="color:#f92672">import</span> Fasta
+<span style="color:#f92672">from</span> Bio.SeqRecord <span style="color:#f92672">import</span> SeqRecord
+
+
+allreads <span style="color:#f92672">=</span> Fasta(<span style="color:#e6db74">&#39;bacterialgenome.fasta&#39;</span>)
+
+file <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;goi.csv&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>)
+roi <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>splitlines() <span style="color:#75715e"># read of interest</span>
+
+roi_list <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> header <span style="color:#f92672">in</span> allreads<span style="color:#f92672">.</span>keys():
+  <span style="color:#66d9ef">if</span> header <span style="color:#f92672">in</span> roi:
+  record <span style="color:#f92672">=</span> allreads[header]
+  seq <span style="color:#f92672">=</span> Seq(str(record))
+  seqid <span style="color:#f92672">=</span> str(record<span style="color:#f92672">.</span>long_name)
+  roi_list<span style="color:#f92672">.</span>append(SeqRecord(seq <span style="color:#f92672">=</span> seq, id <span style="color:#f92672">=</span> seqid,description <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>))
+
+SeqIO<span style="color:#f92672">.</span>write(roi_list, <span style="color:#e6db74">&#34;roi.fasta&#34;</span>, <span style="color:#e6db74">&#34;fasta&#34;</span>)
+
+</code></pre></div><ol start="3">
+<li>samtools faidx &ndash;  indexing takes a lot of time, seems to use multiple threads, works great for small to mid size file</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xargs samtools faidx bacterialgenome.fasta &lt; list.txt &gt; subset.fasta
+
+</code></pre></div><ol start="4">
+<li>Suppose, you have large fasta file (~ 100GB) - such as all the reads combined from metagenomics project, and you are interested in retriving few 100s of sequening by passing header name. Here we are using blast to solve this issue.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make blast db using large fasta file as input - indexing takes some time, but after that it is fast.</span>
+
+ makeblastdb -dbtype nucl -out largeDB -in large.fasta -parse_seqids
+
+<span style="color:#75715e">## NOTE: Still not figure out- limitation in the character of header -- has to be less than 50.</span> 
+
+<span style="color:#75715e"># Search against the db</span>
+
+blastdbcmd -db largeDB -entry <span style="color:#e6db74">&#39;CSM79HLA_TR.c0000000002_1741_3253&#39;</span>
+
+<span style="color:#75715e"># 4.3) How to pass a list? -- just loop each entry from list.txt</span>
+
+<span style="color:#66d9ef">for</span> header in <span style="color:#66d9ef">$(</span>cat list.txt<span style="color:#66d9ef">)</span>;<span style="color:#66d9ef">do</span>
+   blastdbcmd -db largeDB -entry $header &gt;&gt; subset.fasta
+<span style="color:#66d9ef">done</span>
+
+
+</code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-ravinpoudel-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+      
+        ©
+        
+          2000 -
+        
+        2020
+         Ravin Poudel 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-99029062-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

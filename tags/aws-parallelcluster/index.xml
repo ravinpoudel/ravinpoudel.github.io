@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS ParallelCluster on Ravin Poudel</title>
+    <link>https://ravinpoudel.github.io/tags/aws-parallelcluster/</link>
+    <description>Recent content in AWS ParallelCluster on Ravin Poudel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; 2017 Ravin Poudel</copyright>
+    <lastBuildDate>Mon, 22 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ravinpoudel.github.io/tags/aws-parallelcluster/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating HPC cluster in AWS with Slurm Workload Manager (SLURM) </title>
+      <link>https://ravinpoudel.github.io/posts/aws-slurm/</link>
+      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/aws-slurm/</guid>
+      <description>AWS ParallelCluster- Slurm Workload Manager # Create a conda env and install awscli 🙏 Ravin$ conda create -n awscli 🙏 Ravin$ conda activate awscli (awscli) 🙏 Ravin$ conda install -c conda-forge awscli # configure aws with your credentials (awscli) 🙏 Ravin$ aws configure AWS Access Key ID : *************** AWS Secret Access Key :***************** Default region name [us-east-1]: us-east-1 Default output format [None]: # Some of the features of aws cli (awscli) 🙏 Ravin$ aws iam help (awscli) 🙏 Ravin$ aws iam list-users (awscli) 🙏 Ravin$ aws iam get-user (awscli) 🙏 Ravin$ aws s3 ls # install aws-parallelcluster (awscli) 🙏 Ravin$ conda install -c conda-forge aws-parallelcluster More information on aws-parallelcluster.</description>
+    </item>
+    
+  </channel>
+</rss>

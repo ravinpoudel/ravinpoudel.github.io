@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Ravin Poudel</title>
+    <link>https://ravinpoudel.github.io/tags/programming/</link>
+    <description>Recent content in Programming on Ravin Poudel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; 2017 Ravin Poudel</copyright>
+    <lastBuildDate>Sat, 15 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ravinpoudel.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Job Submission on HPCs</title>
+      <link>https://ravinpoudel.github.io/posts/hpc/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/hpc/</guid>
+      <description>Request resource for development environment
+#!/bin/bash  module load ufrc module load slurm srundev --account=epi --qos=epi-b --time=02:00:00 Download files from online sequence repository- vendor
+#!/bin/sh #SBATCH -p hpg1-compute #SBATCH --account=epi #SBATCH --qos=epi #SBATCH --job-name=fastspar #SBATCH --mail-type=ALL #SBATCH --mail-user=rp3448@ufl.edu #SBATCH --ntasks=1 #SBATCH --mem=2gb #SBATCH --time=72:00:00 date;hostname;pwd wget --user=ravin --password=????????? http://hwwgenotyping.ksu.edu/data/ravin/2017/FLB2017AM-GBS_001-3_job319/AAAA-FLB2017_1_1.fastq ## ??????? == password Basic job script
+#!/bin/sh #SBATCH -p hpg1-compute #SBATCH --account=epi #SBATCH --qos=epi-b #SBATCH --job-name=mothur_NCBI #SBATCH --mail-type=ALL #SBATCH --mail-user=rp3448@ufl.edu #SBATCH --ntasks=1 #SBATCH --cpus-per-task=48 #SBATCH --mem=64gb #SBATCH --time=04:00:00 date;hostname;pwd # load the required programs module load mothur mothur GetFastQs_Ravin_bac2014.</description>
+    </item>
+    
+    <item>
+      <title>myFunctions: R Package</title>
+      <link>https://ravinpoudel.github.io/posts/myfunctions/</link>
+      <pubDate>Thu, 20 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/myfunctions/</guid>
+      <description>myFunctions is a R package that I am developing, and currently at very-very early version (v = 0.00000001, Let say). Although I have a long road to go for making a highly useful Package, I find this approach an excellent to self-organize the code. Additionally, this will also save time, as you will not have to write the same functions multiple times. If you find them useful, please feel free to use.</description>
+    </item>
+    
+    <item>
+      <title>UNIX/Linux One Liner for Bioinformatics</title>
+      <link>https://ravinpoudel.github.io/posts/unixoneliner/</link>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/unixoneliner/</guid>
+      <description>Some of the handy UNIX/Linux one liner for bioinformatics.
+# Find all the file name with specific pattern and copy to a folder find data/ -type f -name &amp;#34;S[0-9]*.tsv&amp;#34; | xargs -i cp {} sparccOutput/ # Find any files with particular pattern inside all directories grep --recursive --ignore-case --files-with-matches &amp;#34;CANCELLED&amp;#34; Root_RST-04-106/ # Count the number of files within a folder. ls -F |grep -v / | wc -l # List just the names of matching files grep -l &amp;#39;main&amp;#39; *.</description>
+    </item>
+    
+  </channel>
+</rss>

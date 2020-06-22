@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Biopython on Ravin Poudel</title>
+    <link>https://ravinpoudel.github.io/tags/biopython/</link>
+    <description>Recent content in Biopython on Ravin Poudel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; 2017 Ravin Poudel</copyright>
+    <lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ravinpoudel.github.io/tags/biopython/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Is ability to detect a gene a function of seqencing depth?</title>
+      <link>https://ravinpoudel.github.io/posts/seqencing-depth/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/seqencing-depth/</guid>
+      <description>Here you can find approaches to:
+i) Sampling a fasta file randomly with replacement ii) Example of creating a HMM profile for gene iii) Search genes predicted from a genome against HMM profiles  Tools/Program used:: prodigal
+Prodigal (Prokaryotic Dynamic Programming Genefinding Algorithm) is a microbial (bacterial and archaeal) is a gene/ORF finding program.
+hmmer
+Hmmer provides tools for making probabilistic models of protein and DNA sequence domain families –called profile hidden Markov models, profile HMMs, or just profiles – and for using these profiles to annotate new sequences, to search sequence databases for additional homologs, and to make deep multiple sequence alignments.</description>
+    </item>
+    
+    <item>
+      <title>Designing a targeted panel - for Clinical Genomics</title>
+      <link>https://ravinpoudel.github.io/posts/exome_gene_panel/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/exome_gene_panel/</guid>
+      <description>Question/Task:: Clinical Genomics Design a targeted panel for sequencing all coding exons of human genes BRCA1 and BRCA2 (HGNC names given), and provide genomic coordinate ranges (as a BED- format file) that encompass all bases in those coding exons to the panel manufacturer. The ranges must be disjoint (no overlap, and at least one genomic base must separate adjacent intervals). Such output will be used by the manufacturer to design PCR primer pairs that amplify these targets out of genomic DNA for downstream NGS.</description>
+    </item>
+    
+    <item>
+      <title>Extract specific sequences from a big FASTA file</title>
+      <link>https://ravinpoudel.github.io/posts/randomgenome_access/</link>
+      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/randomgenome_access/</guid>
+      <description>Question &amp;ndash; How to extract specific sequences from a big FASTA file? Getting random access to a fasta or sequene file is often needed for bioinformatics analyses. Multiple random access to a large fasta file could slow the process a lot. Compute time is worst with the fasta file of large size. Following are some of the techniques that could be useful, depending upon the size of fasta file- from few mb to few gb.</description>
+    </item>
+    
+    <item>
+      <title>Job Submission on HPCs</title>
+      <link>https://ravinpoudel.github.io/posts/hpc/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/hpc/</guid>
+      <description>Request resource for development environment
+#!/bin/bash  module load ufrc module load slurm srundev --account=epi --qos=epi-b --time=02:00:00 Download files from online sequence repository- vendor
+#!/bin/sh #SBATCH -p hpg1-compute #SBATCH --account=epi #SBATCH --qos=epi #SBATCH --job-name=fastspar #SBATCH --mail-type=ALL #SBATCH --mail-user=rp3448@ufl.edu #SBATCH --ntasks=1 #SBATCH --mem=2gb #SBATCH --time=72:00:00 date;hostname;pwd wget --user=ravin --password=????????? http://hwwgenotyping.ksu.edu/data/ravin/2017/FLB2017AM-GBS_001-3_job319/AAAA-FLB2017_1_1.fastq ## ??????? == password Basic job script
+#!/bin/sh #SBATCH -p hpg1-compute #SBATCH --account=epi #SBATCH --qos=epi-b #SBATCH --job-name=mothur_NCBI #SBATCH --mail-type=ALL #SBATCH --mail-user=rp3448@ufl.edu #SBATCH --ntasks=1 #SBATCH --cpus-per-task=48 #SBATCH --mem=64gb #SBATCH --time=04:00:00 date;hostname;pwd # load the required programs module load mothur mothur GetFastQs_Ravin_bac2014.</description>
+    </item>
+    
+    <item>
+      <title>Managing conda environment</title>
+      <link>https://ravinpoudel.github.io/posts/conda/</link>
+      <pubDate>Sat, 15 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/conda/</guid>
+      <description>Conda is a general-purpose package and environment management system that allows to install, run, and update packages and their dependencies very efficiently. Besides, creating an environment using conda or miniconda in remote computer will enable one to install and manage softwares without need of sudo power. I usually create one conda environment for one research project, similar concept as creating a Rproject - if you are familiar to R programming, so that I can generate a summary file listing all the packages and their version used for a project or analyses.</description>
+    </item>
+    
+  </channel>
+</rss>

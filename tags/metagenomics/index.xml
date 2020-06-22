@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Metagenomics on Ravin Poudel</title>
+    <link>https://ravinpoudel.github.io/tags/metagenomics/</link>
+    <description>Recent content in Metagenomics on Ravin Poudel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; 2017 Ravin Poudel</copyright>
+    <lastBuildDate>Sun, 16 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ravinpoudel.github.io/tags/metagenomics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Metagenomics tutorial</title>
+      <link>https://ravinpoudel.github.io/posts/metagenomics/</link>
+      <pubDate>Sun, 16 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ravinpoudel.github.io/posts/metagenomics/</guid>
+      <description>Welcome to metagenomics tutorial !!! These tutorials walk you through the process of analyzing shotgun metagenomics data. We will cover:
+ Assembly Based Metagenomics Read Based Metagenomics  Assembly Based Metagenomics Assembling reads into contigs and mapping reads to the assembled contigs are the primary steps in assembly-based metagenomics. This tutorial walks you through the various steps involved in the process of genome assembly and mapping.
+Step 1: Quality Check Prior to genome assembly, reads are cleaned using a custom ARS-RQC pipeline, which utilizes a suite of functions from BBtools to remove host genome contamination and trim the standard Illumina barcodes.</description>
+    </item>
+    
+  </channel>
+</rss>

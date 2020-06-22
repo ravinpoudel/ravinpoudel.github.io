@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/aws/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/aws-parallelcluster/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/aws-slurm/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/slurm/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/</loc>
+    <lastmod>2020-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/bioinformatics/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/biopython/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/seqencing-depth/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/python/</loc>
+    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/exome_gene_panel/</loc>
+    <lastmod>2020-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/randomgenome_access/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/metagenomics/</loc>
+    <lastmod>2019-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/metagenomics/</loc>
+    <lastmod>2019-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/microbial-ecology/</loc>
+    <lastmod>2019-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/bash/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/hpc/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/hpc/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/programming/</loc>
+    <lastmod>2018-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/conda/</loc>
+    <lastmod>2018-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/ari/</loc>
+    <lastmod>2017-10-12T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/garrettlab/</loc>
+    <lastmod>2017-10-12T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/microbiome/</loc>
+    <lastmod>2017-10-12T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/microbiomenetwork_narrative/</loc>
+    <lastmod>2017-10-12T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/network/</loc>
+    <lastmod>2017-10-12T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/r/</loc>
+    <lastmod>2017-10-12T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/little-tricks/</loc>
+    <lastmod>2017-07-10T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/dirty_little_tricks/</loc>
+    <lastmod>2017-07-10T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/projects/</loc>
+    <lastmod>2017-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/projects/virome/</loc>
+    <lastmod>2017-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/vn/</loc>
+    <lastmod>2017-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/local_git/</loc>
+    <lastmod>2017-05-22T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/git/</loc>
+    <lastmod>2017-05-22T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/version-control/</loc>
+    <lastmod>2017-05-22T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/myfunctions/</loc>
+    <lastmod>2017-04-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/r-and-git_control/</loc>
+    <lastmod>2017-04-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/unixoneliner/</loc>
+    <lastmod>2016-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/projects/microbiome-network/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/mn/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/projects/tomatorhizobiome/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/tr/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/projects/soil_fungal/</loc>
+    <lastmod>2014-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/projects/phyllosphere_fungal_community/</loc>
+    <lastmod>2014-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/op/</loc>
+    <lastmod>2014-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/sf/</loc>
+    <lastmod>2014-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/free-writing/</loc>
+    <lastmod>2010-09-20T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/tags/nepal/</loc>
+    <lastmod>2010-09-20T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/posts/nepal/</loc>
+    <lastmod>2010-09-20T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/publications/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/snippets/first/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/snippets/second/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/series/</loc>
+  </url>
+  
+  <url>
+    <loc>https://ravinpoudel.github.io/snippets/</loc>
+  </url>
+  
+</urlset>
